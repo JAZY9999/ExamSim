@@ -1,0 +1,25 @@
+.page-hero { margin-bottom: 28px; }
+.page-hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 4px; }
+
+.section-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Tableau générique (stats, admin) */
+.table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); }
+.table th, .table td { text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--border); font-size: 14px; }
+.table th { background: var(--surface-alt); font-weight: 600; color: var(--text-muted); }
+.table tr:last-child td { border-bottom: none; }
+
+/* Lignes cliquables (accès au détail) */
+.row-link { cursor: pointer; transition: background .12s ease; }
+.row-link:hover td { background: var(--primary-100); }
+
+/* Badges de rôle (admin) */
+.role-etudiant    { color: var(--primary); }
+.role-examinateur { color: var(--warning); }
+.role-admin       { color: var(--danger); }

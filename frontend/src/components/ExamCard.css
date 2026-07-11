@@ -1,0 +1,129 @@
+.exam-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: box-shadow .2s ease, transform .2s ease;
+  position: relative;
+}
+.exam-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+
+/* Carte ciblée : fine bordure colorée à gauche pour différenciation immédiate */
+.exam-card--cible {
+  border-left: 4px solid var(--primary-500, #3b82f6);
+}
+
+.exam-card-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.mod-pill {
+  font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 999px;
+}
+.mod-qcm          { background: var(--primary-100); color: var(--primary); }
+.mod-cas_pratique { background: #ede9fe; color: #6d28d9; }
+.mod-oral         { background: var(--success-100); color: var(--success); }
+
+/* --- Badges destinataires --- */
+.exam-badge-cible {
+  margin-left: auto;
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 12px; font-weight: 700;
+  padding: 4px 10px; border-radius: 999px;
+  background: var(--primary-100, #dbeafe); color: var(--primary-700, #1d4ed8);
+  cursor: default; position: relative;
+}
+.exam-badge-public {
+  margin-left: auto;
+  font-size: 12px; font-weight: 600;
+  padding: 4px 10px; border-radius: 999px;
+  background: #f0fdf4; color: #15803d;
+}
+
+/* --- Tooltip au hover --- */
+.badge-tooltip {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 50;
+  min-width: 220px;
+  max-width: 320px;
+  background: var(--surface, #fff);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 8px 24px rgba(0,0,0,.14);
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text);
+  white-space: normal;
+  cursor: default;
+}
+.exam-badge-cible:hover .badge-tooltip { display: block; }
+
+.tooltip-section { margin-bottom: 8px; }
+.tooltip-section:last-child { margin-bottom: 0; }
+.tooltip-section strong { display: block; margin-bottom: 4px; font-size: 12px; }
+.tooltip-section ul {
+  margin: 0; padding: 0 0 0 16px; list-style: disc;
+}
+.tooltip-section ul li { margin-bottom: 2px; }
+
+.exam-card-title { font-size: 18px; font-weight: 700; }
+.exam-card-desc { font-size: 14px; color: var(--text-muted); flex: 1; }
+.exam-card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* Disponibilité */
+.exam-dispo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  margin-top: 4px;
+}
+
+/* Badge sessions */
+.sessions-badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: var(--surface-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+  cursor: default;
+  margin-left: 4px;
+}
+.sessions-badge--done {
+  background: #dcfce7;
+  color: #15803d;
+  border-color: #bbf7d0;
+  cursor: pointer;
+}
+
+.exam-card--done {
+  border: 1.5px solid #86efac;
+}
+
+.exam-creator {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.exam-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}

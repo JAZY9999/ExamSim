@@ -1,0 +1,77 @@
+/* Page d'authentification : écran scindé en deux. */
+.auth {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+/* --- Colonne gauche : illustration --- */
+.auth-hero {
+  background: linear-gradient(160deg, var(--primary) 0%, var(--primary-600) 100%);
+  color: #fff;
+  padding: 48px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.auth-logo { font-size: 26px; font-weight: 800; margin-bottom: 40px; }
+.auth-hero h1 { font-size: 40px; line-height: 1.15; font-weight: 800; margin-bottom: 20px; }
+.auth-hero p { font-size: 17px; opacity: .9; max-width: 420px; }
+
+.auth-illus {
+  position: relative;
+  margin-top: 48px;
+  height: 220px;
+}
+.illus-emoji {
+  position: relative;
+  z-index: 2;
+  font-size: 64px;
+  display: block;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,.25));
+}
+.blob { position: absolute; border-radius: 50%; filter: blur(8px); opacity: .35; }
+.b1 { width: 160px; height: 160px; background: #60a5fa; top: 10px; left: 20px; }
+.b2 { width: 120px; height: 120px; background: #a78bfa; top: 60px; left: 180px; }
+.b3 { width: 100px; height: 100px; background: #34d399; top: 100px; left: 90px; }
+
+/* --- Colonne droite : formulaire --- */
+.auth-form-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: var(--bg);
+}
+.auth-form {
+  width: 100%;
+  max-width: 420px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 40px;
+}
+.auth-form h2 { font-size: 26px; font-weight: 700; }
+.forgot { display: block; text-align: right; font-size: 13px; margin-top: 12px; }
+.switch-mode { text-align: center; margin-top: 20px; font-size: 14px; color: var(--text-muted); }
+
+.demo-hint {
+  margin-top: 24px;
+  padding: 12px 14px;
+  background: var(--surface-alt);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.demo-hint code { background: var(--primary-100); color: var(--primary); padding: 1px 5px; border-radius: 4px; }
+
+/* Responsive : on masque l'illustration sur petit écran. */
+@media (max-width: 860px) {
+  .auth { grid-template-columns: 1fr; }
+  .auth-hero { display: none; }
+}

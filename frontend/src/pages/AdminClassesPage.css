@@ -1,0 +1,62 @@
+/* ===== AdminClassesPage.css ===================================== */
+
+.classes-create-bar { margin-bottom: 24px; }
+.classes-create-form {
+  display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+}
+.classes-create-form .input { flex: 1; min-width: 260px; }
+
+/* --- Liste des classes --- */
+.classes-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+
+.classe-card {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color .15s ease, box-shadow .15s ease;
+  padding: 0;
+}
+.classe-card.open { border-color: var(--primary-500); box-shadow: 0 0 0 3px var(--primary-100, #dbeafe); }
+
+.classe-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px; cursor: pointer; user-select: none;
+  background: var(--surface);
+  transition: background .1s ease;
+}
+.classe-header:hover { background: var(--surface-alt); }
+
+.classe-info { display: flex; align-items: center; gap: 12px; }
+.classe-icon { font-size: 22px; }
+.classe-nom { font-size: 16px; display: block; }
+.classe-count { font-size: 13px; display: block; margin-top: 2px; }
+
+.classe-actions { display: flex; align-items: center; gap: 12px; }
+.chevron { font-size: 12px; color: var(--text-muted); }
+
+/* --- Corps --- */
+.classe-body {
+  padding: 16px 20px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.membres-table { margin-bottom: 16px; }
+.membres-table td { vertical-align: middle; }
+
+/* --- Ajout d'un membre --- */
+.add-membre-panel { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+
+.add-membre-list {
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  max-height: 220px; overflow-y: auto;
+  background: var(--surface);
+}
+
+.add-membre-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px; cursor: pointer; gap: 12px;
+  transition: background .1s ease;
+}
+.add-membre-item:not(:last-child) { border-bottom: 1px solid var(--border); }
+.add-membre-item:hover { background: var(--primary-50, #eff6ff); }

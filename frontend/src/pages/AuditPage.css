@@ -1,0 +1,19 @@
+.audit-filters {
+  display: flex; gap: 12px; margin-bottom: 18px; flex-wrap: wrap;
+}
+.audit-filters .input { flex: 1; min-width: 240px; }
+.audit-filters .select { width: auto; }
+
+.audit-date { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.audit-email { font-size: 12px; }
+
+.audit-badge {
+  display: inline-block; font-size: 12px; font-weight: 700;
+  padding: 3px 10px; border-radius: 999px;
+  background: var(--border); color: var(--text);
+  white-space: nowrap;
+}
+.audit-ok     { background: var(--success-100); color: var(--success); }
+.audit-danger { background: var(--danger-100);  color: var(--danger); }
+.audit-info   { background: var(--primary-100); color: var(--primary); }
+.audit-admin  { background: var(--warning-100); color: var(--warning); }

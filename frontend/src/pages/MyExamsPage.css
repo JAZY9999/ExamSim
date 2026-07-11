@@ -1,0 +1,57 @@
+.my-exams-list { display: flex; flex-direction: column; gap: 16px; }
+
+.my-exam-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 20px 24px;
+  display: flex; gap: 24px; align-items: flex-start;
+  transition: box-shadow .2s ease;
+}
+.my-exam-card:hover { box-shadow: var(--shadow-lg); }
+.my-exam-card--done { border-left: 4px solid #16a34a; }
+
+.my-exam-info { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.my-exam-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.my-exam-title { font-size: 17px; font-weight: 700; margin: 0; }
+.my-exam-desc { font-size: 13px; color: var(--text-muted); margin: 0; }
+.my-exam-dispo {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  font-size: 12px; color: var(--text-muted);
+  background: var(--surface-alt); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 6px 12px;
+}
+.my-exam-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13px; }
+
+.my-exam-aside {
+  display: flex; flex-direction: column; gap: 12px; align-items: flex-end; min-width: 160px;
+}
+
+/* Bloc progression sessions */
+.sessions-progress {
+  text-align: center;
+  background: var(--surface-alt);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  min-width: 120px;
+}
+.sessions-progress.done { border-color: #86efac; background: #f0fdf4; }
+.sessions-count { display: block; font-size: 24px; font-weight: 800; }
+.sessions-label { font-size: 12px; color: var(--text-muted); }
+.sessions-progress.done .sessions-label { color: #15803d; }
+
+/* Actions */
+.my-exam-actions { display: flex; flex-direction: column; gap: 8px; }
+.btn-danger-ghost {
+  background: transparent; color: #b91c1c; border: 1.5px solid #fca5a5;
+  transition: background .15s;
+}
+.btn-danger-ghost:hover { background: #fee2e2; }
+
+/* État vide */
+.my-exams-empty {
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  padding: 60px 20px; color: var(--text-muted); text-align: center;
+}

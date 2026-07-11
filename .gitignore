@@ -1,0 +1,13 @@
+# Go
+backend/*.exe
+backend/examsim
+*.test
+
+# Node / React
+frontend/node_modules/
+frontend/dist/
+
+# Divers
+.env
+*.log
+.DS_Store

@@ -1,0 +1,53 @@
+.session-detail { max-width: 860px; }
+.session-detail > .btn { margin-bottom: 16px; }
+
+.detail-header {
+  display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.detail-header h1 { font-size: 24px; margin-bottom: 4px; }
+.detail-meta { display: flex; align-items: center; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+.detail-dates { text-align: right; font-size: 14px; display: flex; flex-direction: column; gap: 4px; }
+.detail-score { margin-top: 6px; font-size: 16px; color: var(--primary-600); }
+
+/* Copie */
+.question-detail { margin-bottom: 14px; }
+.question-detail-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.question-detail-enonce { font-weight: 600; margin-bottom: 14px; }
+
+.props-detail { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.prop-detail {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.prop-detail.bonne { border-color: var(--success); background: var(--success-100); }
+.prop-detail.mauvaise { border-color: var(--danger); background: var(--danger-100); }
+.prop-flag {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 999px;
+  background: var(--success); color: #fff;
+}
+.prop-flag.choix { background: var(--primary-600); }
+
+.texte-reponse {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  white-space: pre-wrap;
+}
+
+/* Évaluations */
+.eval-detail { margin-bottom: 14px; }
+.eval-detail-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.criteres-table { box-shadow: none; margin-bottom: 10px; }
+.criteres-table td { padding: 8px 12px; }
+.critere-note { text-align: right; font-weight: 600; color: var(--primary-600); font-variant-numeric: tabular-nums; }
+.eval-remarques-detail { font-style: italic; color: var(--text-muted); }
+
+/* Formulaire d'évaluation */
+.eval-form { margin: 24px 0 48px; }
+.critere-form-head { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 6px; }
+.slider-detail { width: 100%; accent-color: var(--primary-600); }

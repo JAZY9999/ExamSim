@@ -1,0 +1,16 @@
+.admin-create { margin-bottom: 28px; }
+.admin-create-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr 1.2fr auto auto;
+  gap: 10px;
+  align-items: center;
+}
+@media (max-width: 1000px) {
+  .admin-create-form { grid-template-columns: 1fr 1fr; }
+}
+
+.select-role { padding: 7px 10px; width: auto; font-size: 13px; }
+
+.admin-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn-small { padding: 6px 10px; font-size: 12.5px; }
+.btn-delete:not(:disabled):hover { background: var(--danger-100); color: var(--danger); border-color: var(--danger); }

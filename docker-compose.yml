@@ -1,0 +1,49 @@
+# Orchestration complète de la plateforme ExamSim.
+# Lance en une commande : PostgreSQL + backend Go + frontend React (nginx).
+#
+#   docker compose up --build
+#
+# Accès : http://localhost:5173
+
+services:
+  # --- Base de données PostgreSQL ---
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: examsim
+      POSTGRES_PASSWORD: examsim
+      POSTGRES_DB: examsim
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U examsim"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # --- Backend Go (API REST + WebSocket) ---
+  backend:
+    build: ./backend
+    environment:
+      PORT: "8080"
+      DATABASE_URL: "postgres://examsim:examsim@db:5432/examsim?sslmode=disable"
+      JWT_SECRET: "change-me-in-production"
+      JITSI_DOMAIN: "framatalk.org"
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # --- Frontend React servi par nginx ---
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  db_data:

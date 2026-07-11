@@ -1,0 +1,103 @@
+.create-exam { max-width: 820px; margin: 0 auto; padding-bottom: 48px; }
+
+.create-section { margin-bottom: 24px; }
+.create-step { font-size: 18px; font-weight: 700; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+
+.create-row { display: flex; gap: 16px; flex-wrap: wrap; }
+.create-row .field { flex: 1; min-width: 160px; }
+.dispo-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end; }
+.dispo-row .field { flex: 1; min-width: 200px; }
+.dispo-hint { font-size: 13px; margin-top: 8px; color: var(--text-muted); }
+
+/* Cartes de choix de modalité */
+.modalite-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.modalite-card {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 6px;
+  padding: 18px; text-align: left;
+  background: var(--surface); border: 2px solid var(--border);
+  border-radius: var(--radius); cursor: pointer; font: inherit;
+  transition: border .15s ease, background .15s ease, transform .1s ease;
+}
+.modalite-card:hover { border-color: var(--primary-500); transform: translateY(-2px); }
+.modalite-card.selected { border-color: var(--primary-600); background: var(--primary-100); }
+.modalite-icon { font-size: 28px; }
+.modalite-card .muted { font-size: 13px; }
+
+/* Éditeurs de questions */
+.question-editor {
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 16px; margin-bottom: 14px; background: var(--surface-alt);
+  display: flex; flex-direction: column; gap: 10px;
+}
+.question-editor-head { display: flex; align-items: center; justify-content: space-between; }
+.question-editor-actions { display: flex; align-items: center; gap: 10px; }
+
+.points-label { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); }
+.input-points { width: 72px; padding: 6px 10px; }
+
+.btn-small { padding: 6px 10px; font-size: 13px; }
+
+.props { display: flex; flex-direction: column; gap: 8px; }
+.props-hint { font-size: 13px; }
+.prop-row { display: flex; align-items: center; gap: 10px; }
+.prop-row input[type="radio"] { width: 18px; height: 18px; accent-color: var(--success); flex-shrink: 0; }
+
+/* Éditeur de critères (oral) */
+.critere-editor { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.critere-editor .input:first-child { flex: 1; }
+
+.create-submit {
+  display: flex; justify-content: flex-end; gap: 12px;
+  padding: 8px 0 40px;
+}
+
+/* --- Destinataires --- */
+.dest-tabs {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px;
+}
+.dest-tab {
+  padding: 8px 16px; border-radius: var(--radius-sm);
+  border: 2px solid var(--border); background: var(--surface);
+  font: inherit; font-size: 14px; cursor: pointer;
+  transition: border .15s ease, background .15s ease;
+}
+.dest-tab:hover { border-color: var(--primary-500); }
+.dest-tab.active {
+  border-color: var(--primary-600); background: var(--primary-100);
+  color: var(--primary-700); font-weight: 600;
+}
+
+.dest-grid {
+  display: flex; flex-direction: column; gap: 8px;
+  max-height: 320px; overflow-y: auto;
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 12px;
+}
+.dest-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 14px; border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border); cursor: pointer;
+  transition: border .12s ease, background .12s ease;
+  background: var(--surface-alt);
+}
+.dest-item:hover { border-color: var(--primary-400); }
+.dest-item.selected {
+  border-color: var(--primary-600); background: var(--primary-50, #eff6ff);
+}
+.dest-item input[type="checkbox"] {
+  width: 17px; height: 17px; accent-color: var(--primary-600); flex-shrink: 0;
+}
+.dest-item .muted { font-size: 13px; }
+
+/* Pied de formulaire */
+.create-submit {
+  display: flex; gap: 12px; justify-content: flex-end; align-items: center;
+  flex-wrap: wrap; margin-top: 8px;
+}
+.btn-danger {
+  background: #fee2e2; color: #b91c1c; border: 1.5px solid #fca5a5;
+  padding: 10px 20px; border-radius: var(--radius-sm); cursor: pointer;
+  font-weight: 600; font-size: 14px; transition: background .15s, border .15s;
+}
+.btn-danger:hover { background: #fecaca; border-color: #ef4444; }
+.btn-small { padding: 6px 12px !important; font-size: 13px !important; }
