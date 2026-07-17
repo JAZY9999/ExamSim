@@ -107,12 +107,6 @@ export default function AuthPage() {
             {busy ? '...' : mode === 'login' ? 'Se connecter' : 'S\'inscrire'}
           </button>
 
-          {mode === 'login' && (
-            <a className="forgot" href="#" onClick={(e) => e.preventDefault()}>
-              Mot de passe oublié ?
-            </a>
-          )}
-
           <div className="switch-mode">
             {mode === 'login' ? (
               <>Pas encore de compte ?{' '}
