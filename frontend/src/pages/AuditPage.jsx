@@ -55,8 +55,11 @@ export default function AuditPage() {
 
       {/* Filtres */}
       <div className="audit-filters">
-        <input className="input" placeholder="🔍 Filtrer par utilisateur, email ou détail..."
-          value={recherche} onChange={(e) => setRecherche(e.target.value)} />
+        <div className="audit-search">
+          <i className="bi bi-search" />
+          <input className="input" placeholder="Filtrer par utilisateur, email ou détail..."
+            value={recherche} onChange={(e) => setRecherche(e.target.value)} />
+        </div>
         <select className="select" value={filtreAction} onChange={(e) => setFiltreAction(e.target.value)}>
           <option value="">Toutes les actions</option>
           {Object.entries(ACTIONS).map(([k, v]) => <option key={k} value={k}>{v.label}</option>)}

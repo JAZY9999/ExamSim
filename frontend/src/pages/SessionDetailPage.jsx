@@ -135,7 +135,7 @@ export default function SessionDetailPage() {
 
   return (
     <div className="session-detail">
-      <button className="btn btn-ghost" onClick={() => navigate(-1)}>← Retour</button>
+      <button className="btn btn-ghost" onClick={() => navigate(-1)}><i className="bi bi-chevron-left" /> Retour</button>
 
       {/* --- En-tête : traçabilité de la session --- */}
       <div className="card detail-header">
@@ -170,8 +170,8 @@ export default function SessionDetailPage() {
                   <span className="muted">{q.points} pt(s)</span>
                   {q.type === 'qcm' && rep && (
                     rep.correct
-                      ? <span className="tag tag-success">✓ Correct</span>
-                      : <span className="tag tag-danger">✗ Incorrect</span>
+                      ? <span className="tag tag-success"><i className="bi bi-check-lg" /> Correct</span>
+                      : <span className="tag tag-danger"><i className="bi bi-x-lg" /> Incorrect</span>
                   )}
                   {!rep && <span className="tag tag-warning">Sans réponse</span>}
                 </div>
@@ -226,7 +226,7 @@ export default function SessionDetailPage() {
                   <span className="muted"> · {fmt(ev.created_at)}</span>
                   {is_staff && (
                     <span className={`tag ${ev.note_visible ? 'tag-success' : 'tag-warning'}`} style={{ marginLeft: 8 }}>
-                      {ev.note_visible ? '👁 Publiée' : '🙈 Cachée'}
+                      {ev.note_visible ? 'Publiée' : 'Cachée'}
                     </span>
                   )}
                 </div>
@@ -236,7 +236,7 @@ export default function SessionDetailPage() {
                   </span>
                   {peutModifier && (
                     <button className="btn btn-ghost btn-small" onClick={() => démarrerEdition(ev)} title="Modifier l'évaluation">
-                      ✏️ Modifier
+                      <i className="bi bi-pencil-square" /> Modifier
                     </button>
                   )}
                   {is_staff && (
@@ -271,7 +271,7 @@ export default function SessionDetailPage() {
       {peut_evaluer && (
         <form className="card eval-form" onSubmit={envoyerEvaluation}>
           <h2 className="section-title">
-            {editingEvalId ? '✏️ Modifier l\'évaluation' : 'Évaluer cette copie'}
+            {editingEvalId ? 'Modifier l\'évaluation' : 'Évaluer cette copie'}
           </h2>
 
           {grille ? (

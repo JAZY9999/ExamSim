@@ -125,10 +125,10 @@ export default function OralPage() {
     <div className="oral">
       {/* Bandeau supérieur */}
       <div className="oral-topbar">
-        <button className="btn btn-ghost" onClick={() => navigate('/')}>← Quitter</button>
-        <div className="oral-title">🎤 {examen.titre}</div>
+        <button className="btn btn-ghost" onClick={() => navigate('/')}><i className="bi bi-chevron-left" /> Quitter</button>
+        <div className="oral-title">{examen.titre}</div>
         <span className={`conn-badge ${connected ? 'on' : 'off'}`}>
-          {connected ? '● Synchronisé' : '○ Déconnecté'}
+          <i className={`bi ${connected ? 'bi-record-circle-fill' : 'bi-record-circle'}`} /> {connected ? 'Synchronisé' : 'Déconnecté'}
         </span>
       </div>
 
@@ -138,7 +138,7 @@ export default function OralPage() {
           {isExaminateur && saved ? (
             /* --- Écran de résultat côté examinateur --- */
             <div className="eval-done">
-              <div className="eval-done-icon">✅</div>
+              <div className="eval-done-icon"><i className="bi bi-check-circle-fill" /></div>
               <h2>Évaluation enregistrée</h2>
               <p>
                 <strong>{etudiant?.prenom} {etudiant?.nom}</strong> est passé(e) à
@@ -213,7 +213,7 @@ export default function OralPage() {
           ) : evalResult ? (
             /* --- La note arrive en direct chez l'étudiant --- */
             <div className="eval-done">
-              <div className="eval-done-icon">🎓</div>
+              <div className="eval-done-icon"><i className="bi bi-check-circle-fill" /></div>
               <h2>Épreuve terminée</h2>
               <p>L'examinateur a validé votre note :</p>
               <div className="eval-note-big">
@@ -234,9 +234,9 @@ export default function OralPage() {
                 affiché à droite. Restez concentré et gérez votre temps de parole.
               </p>
               <div className="student-tips">
-                <p>💡 Le chronomètre passe au rouge dans la dernière minute.</p>
-                <p>🎥 Vérifiez que votre caméra et votre micro sont actifs.</p>
-                <p>🎯 Votre note s'affichera ici dès que l'examinateur l'aura validée.</p>
+                <p><i className="bi bi-lightbulb" /> Le chronomètre passe au rouge dans la dernière minute.</p>
+                <p><i className="bi bi-camera-video" /> Vérifiez que votre caméra et votre micro sont actifs.</p>
+                <p><i className="bi bi-bullseye" /> Votre note s'affichera ici dès que l'examinateur l'aura validée.</p>
               </div>
             </div>
           )}
@@ -269,13 +269,13 @@ export default function OralPage() {
           {isExaminateur && (
             <div className="oral-controls">
               {!running ? (
-                <button className="btn btn-success" onClick={() => send({ type: 'start' })}>▶ Start</button>
+                <button className="btn btn-success" onClick={() => send({ type: 'start' })}><i className="bi bi-play-fill" /> Start</button>
               ) : (
-                <button className="btn btn-ghost" onClick={() => send({ type: 'pause' })}>⏸ Pause</button>
+                <button className="btn btn-ghost" onClick={() => send({ type: 'pause' })}><i className="bi bi-pause-fill" /> Pause</button>
               )}
               <button className="btn btn-danger"
                 onClick={() => send({ type: 'reset', seconds: (examen.duree_min || 15) * 60 })}>
-                ⟲ Reset
+                <i className="bi bi-arrow-counterclockwise" /> Reset
               </button>
             </div>
           )}

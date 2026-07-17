@@ -1,11 +1,4 @@
-/* =========================================================================
-   Charte graphique ExamSim
-   - Typographie : Inter (sans-serif moderne)
-   - Fond : gris très clair / blanc cassé (limite la fatigue visuelle)
-   - Primaire : bleu roi / bleu nuit (professionnel, institutionnel)
-   - Sémantique : vert (succès), rouge (erreur/critique), orange (avertissement)
-   - Composants : coins arrondis, ombres légères, interfaces aérées
-   ========================================================================= */
+/* variables globales du site (couleurs, rayons, ombres...) */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -57,7 +50,7 @@ body {
 a { color: var(--primary-600); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-/* --- Boutons --- */
+/* boutons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -69,14 +62,14 @@ a:hover { text-decoration: underline; }
   border: none;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: background .15s ease, transform .05s ease, box-shadow .15s ease;
+  transition: background .15s ease-out, transform .05s ease, box-shadow .15s ease;
 }
 .btn:active { transform: translateY(1px); }
 .btn-primary { background: var(--primary-600); color: #fff; box-shadow: var(--shadow-sm); }
 .btn-primary:hover { background: var(--primary-500); }
 .btn-success { background: var(--success); color: #fff; }
 .btn-danger  { background: var(--danger);  color: #fff; }
-.btn-ghost   { background: transparent; color: var(--text); border: 1px solid var(--border); }
+.btn-ghost   { background: transparent; color: var(--text); border: 1px solid var(--border); border-radius: 6px; }
 .btn-ghost:hover { background: var(--surface-alt); }
 .btn:disabled { opacity: .5; cursor: not-allowed; }
 .btn-block { width: 100%; }

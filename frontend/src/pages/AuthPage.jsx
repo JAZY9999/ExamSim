@@ -40,16 +40,16 @@ export default function AuthPage() {
     <div className="auth">
       {/* Colonne gauche : illustration + accroche */}
       <div className="auth-hero">
-        <div className="auth-logo">🎓 ExamSim</div>
+        <div className="auth-logo"><i className="bi bi-mortarboard-fill" /> ExamSim</div>
         <h1>Entraînez-vous.<br />Chronométrez.<br />Évaluez-vous.</h1>
         <p>
           La plateforme collaborative pour préparer vos examens écrits et oraux
           dans les conditions réelles.
         </p>
         <div className="auth-illus" aria-hidden="true">
-          {/* Illustration abstraite d'étudiants qui collaborent */}
-          <div className="blob b1" /><div className="blob b2" /><div className="blob b3" />
-          <span className="illus-emoji">👩‍🎓👨‍🏫👨‍🎓</span>
+          <i className="bi bi-mortarboard-fill" />
+          <i className="bi bi-easel2-fill" />
+          <i className="bi bi-person-video3" />
         </div>
       </div>
 

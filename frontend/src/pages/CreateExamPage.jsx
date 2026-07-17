@@ -8,9 +8,9 @@ import { useAuth } from '../context/AuthContext'
 import './CreateExamPage.css'
 
 const MODALITES = [
-  { id: 'qcm', icon: '📋', label: 'QCM', desc: 'Questions à choix multiple, corrigées automatiquement.' },
-  { id: 'cas_pratique', icon: '✍️', label: 'Cas pratique', desc: 'Réponses rédigées, évaluées par un pair ou un examinateur.' },
-  { id: 'oral', icon: '🎤', label: 'Oral', desc: 'Épreuve en face-à-face : visio + timer synchronisé + barème.' },
+  { id: 'qcm', icon: 'bi-list-check', label: 'QCM', desc: 'Questions à choix multiple, corrigées automatiquement.' },
+  { id: 'cas_pratique', icon: 'bi-pencil-square', label: 'Cas pratique', desc: 'Réponses rédigées, évaluées par un pair ou un examinateur.' },
+  { id: 'oral', icon: 'bi-mic-fill', label: 'Oral', desc: 'Épreuve en face-à-face : visio + timer synchronisé + barème.' },
 ]
 
 const emptyQcm = () => ({ enonce: '', propositions: ['', ''], bonne: 0, points: 2 })
@@ -210,7 +210,7 @@ export default function CreateExamPage({ editMode = false }) {
   return (
     <div className="create-exam">
       <div className="page-hero">
-        <h1>{editMode ? '✏️ Modifier le sujet' : 'Créer un sujet'}</h1>
+        <h1>{editMode ? 'Modifier le sujet' : 'Créer un sujet'}</h1>
         <p className="muted">
           {editMode
             ? 'Modifiez les informations, questions et destinataires de ce sujet.'
@@ -257,19 +257,19 @@ export default function CreateExamPage({ editMode = false }) {
           {/* Fenêtre de disponibilité */}
           <div className="create-row dispo-row">
             <div className="field">
-              <label>📅 Disponible à partir du <span className="muted">(optionnel)</span></label>
+              <label><i className="bi bi-calendar-event" /> Disponible à partir du <span className="muted">(optionnel)</span></label>
               <input className="input" type="datetime-local"
                 value={disponibleDe} onChange={(e) => setDisponibleDe(e.target.value)} />
             </div>
             <div className="field">
-              <label>🔒 Disponible jusqu'au <span className="muted">(optionnel)</span></label>
+              <label><i className="bi bi-lock" /> Disponible jusqu'au <span className="muted">(optionnel)</span></label>
               <input className="input" type="datetime-local"
                 value={disponibleJusqua} onChange={(e) => setDisponibleJusqua(e.target.value)} />
             </div>
           </div>
           {(disponibleDe || disponibleJusqua) && (
             <p className="muted dispo-hint">
-              ℹ️ Hors de cette fenêtre, les étudiants ne verront pas l&apos;examen.
+              <i className="bi bi-info-circle" /> Hors de cette fenêtre, les étudiants ne verront pas l&apos;examen.
               Laissez vide pour qu&apos;il soit toujours accessible.
             </p>
           )}
@@ -283,7 +283,7 @@ export default function CreateExamPage({ editMode = false }) {
               <button key={m.id} type="button"
                 className={`modalite-card ${modalite === m.id ? 'selected' : ''}`}
                 onClick={() => setModalite(m.id)}>
-                <span className="modalite-icon">{m.icon}</span>
+                <i className={`modalite-icon bi ${m.icon}`} />
                 <strong>{m.label}</strong>
                 <span className="muted">{m.desc}</span>
               </button>
@@ -307,7 +307,7 @@ export default function CreateExamPage({ editMode = false }) {
                       </label>
                       {qcms.length > 1 && (
                         <button type="button" className="btn btn-ghost btn-small"
-                          onClick={() => removeAt(qcms, setQcms)(i)}>🗑</button>
+                          onClick={() => removeAt(qcms, setQcms)(i)}><i className="bi bi-trash" /></button>
                       )}
                     </div>
                   </div>
@@ -330,19 +330,19 @@ export default function CreateExamPage({ editMode = false }) {
                             onClick={() => {
                               const props = q.propositions.filter((_, k) => k !== j)
                               setQcm(i, { propositions: props, bonne: q.bonne >= props.length ? 0 : q.bonne })
-                            }}>✕</button>
+                            }}><i className="bi bi-x-lg" /></button>
                         )}
                       </div>
                     ))}
                     <button type="button" className="btn btn-ghost btn-small"
                       onClick={() => setQcm(i, { propositions: [...q.propositions, ''] })}>
-                      + Ajouter une proposition
+                      <i className="bi bi-plus-lg" /> Ajouter une proposition
                     </button>
                   </div>
                 </div>
               ))}
               <button type="button" className="btn btn-ghost"
-                onClick={() => setQcms([...qcms, emptyQcm()])}>+ Ajouter une question</button>
+                onClick={() => setQcms([...qcms, emptyQcm()])}><i className="bi bi-plus-lg" /> Ajouter une question</button>
             </>
           )}
 
@@ -360,7 +360,7 @@ export default function CreateExamPage({ editMode = false }) {
                       </label>
                       {ouvertes.length > 1 && (
                         <button type="button" className="btn btn-ghost btn-small"
-                          onClick={() => removeAt(ouvertes, setOuvertes)(i)}>🗑</button>
+                          onClick={() => removeAt(ouvertes, setOuvertes)(i)}><i className="bi bi-trash" /></button>
                       )}
                     </div>
                   </div>
@@ -370,7 +370,7 @@ export default function CreateExamPage({ editMode = false }) {
                 </div>
               ))}
               <button type="button" className="btn btn-ghost"
-                onClick={() => setOuvertes([...ouvertes, emptyOuverte()])}>+ Ajouter une question</button>
+                onClick={() => setOuvertes([...ouvertes, emptyOuverte()])}><i className="bi bi-plus-lg" /> Ajouter une question</button>
             </>
           )}
 
@@ -392,12 +392,12 @@ export default function CreateExamPage({ editMode = false }) {
                   </label>
                   {criteres.length > 1 && (
                     <button type="button" className="btn btn-ghost btn-small"
-                      onClick={() => removeAt(criteres, setCriteres)(i)}>🗑</button>
+                      onClick={() => removeAt(criteres, setCriteres)(i)}><i className="bi bi-trash" /></button>
                   )}
                 </div>
               ))}
               <button type="button" className="btn btn-ghost"
-                onClick={() => setCriteres([...criteres, emptyCritere()])}>+ Ajouter un critère</button>
+                onClick={() => setCriteres([...criteres, emptyCritere()])}><i className="bi bi-plus-lg" /> Ajouter un critère</button>
             </>
           )}
         </div>
@@ -410,13 +410,13 @@ export default function CreateExamPage({ editMode = false }) {
           </p>
           <div className="dest-tabs">
             {[
-              { key: 'public', label: '🌐 Public (tous les étudiants)' },
-              { key: 'classes', label: `🏫 Par classe${selClasses.length ? ` (${selClasses.length})` : ''}` },
-              { key: 'etudiants', label: `👤 Par étudiant${selEtudiants.length ? ` (${selEtudiants.length})` : ''}` },
+              { key: 'public', icon: 'bi-globe', label: 'Public (tous les étudiants)' },
+              { key: 'classes', icon: 'bi-building', label: `Par classe${selClasses.length ? ` (${selClasses.length})` : ''}` },
+              { key: 'etudiants', icon: 'bi-person', label: `Par étudiant${selEtudiants.length ? ` (${selEtudiants.length})` : ''}` },
             ].map((t) => (
               <button key={t.key} type="button"
                 className={`dest-tab${destMode === t.key ? ' active' : ''}`}
-                onClick={() => setDestMode(t.key)}>{t.label}</button>
+                onClick={() => setDestMode(t.key)}><i className={`bi ${t.icon}`} /> {t.label}</button>
             ))}
           </div>
           {destMode === 'classes' && (
@@ -454,13 +454,13 @@ export default function CreateExamPage({ editMode = false }) {
           {editMode && (
             <button type="button" className="btn btn-danger" disabled={deleting}
               onClick={supprimerExamen}>
-              {deleting ? 'Suppression...' : '🗑 Supprimer cet examen'}
+              {deleting ? 'Suppression...' : <><i className="bi bi-trash" /> Supprimer cet examen</>}
             </button>
           )}
           <button type="button" className="btn btn-ghost"
             onClick={() => navigate(editMode ? '/mes-sujets' : '/')}>Annuler</button>
           <button type="submit" className="btn btn-primary" disabled={busy}>
-            {busy ? (editMode ? 'Mise à jour...' : 'Création...') : (editMode ? '✓ Enregistrer les modifications' : '✓ Créer le sujet')}
+            {busy ? (editMode ? 'Mise à jour...' : 'Création...') : (editMode ? 'Enregistrer les modifications' : 'Créer le sujet')}
           </button>
         </div>
       </form>

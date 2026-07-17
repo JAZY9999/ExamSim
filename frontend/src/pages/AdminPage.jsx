@@ -113,7 +113,7 @@ export default function AdminPage() {
             {ROLES.map((r) => <option key={r.value} value={r.value}>{r.label}</option>)}
           </select>
           <button className="btn btn-primary" disabled={busy}>
-            {busy ? '...' : '+ Créer'}
+            {busy ? '...' : <><i className="bi bi-plus-lg" /> Créer</>}
           </button>
         </form>
       </div>
@@ -145,9 +145,9 @@ export default function AdminPage() {
                 <td>
                   <div className="admin-actions">
                     <button className="btn btn-ghost btn-small" title="Réinitialiser le mot de passe"
-                      onClick={() => resetPassword(u)}>🔑 Reset MDP</button>
+                      onClick={() => resetPassword(u)}><i className="bi bi-key" /> Reset MDP</button>
                     <button className="btn btn-ghost btn-small btn-delete" title="Supprimer le compte"
-                      disabled={isMe} onClick={() => supprimer(u)}>🗑 Supprimer</button>
+                      disabled={isMe} onClick={() => supprimer(u)}><i className="bi bi-trash" /> Supprimer</button>
                   </div>
                 </td>
               </tr>

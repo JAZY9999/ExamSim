@@ -54,11 +54,11 @@ export default function ExamCard({ examen, onError }) {
           {/* Badges staff */}
           {isStaff && isCible && (
             <span className="exam-badge-cible" data-tooltip={buildTooltipText(a)}>
-              🎯 Ciblé
+              <i className="bi bi-bullseye" /> Ciblé
               <span className="badge-tooltip">{buildTooltipNode(a)}</span>
             </span>
           )}
-          {isStaff && !isCible && <span className="exam-badge-public">🌐 Public</span>}
+          {isStaff && !isCible && <span className="exam-badge-public"><i className="bi bi-globe" /> Public</span>}
 
           {/* Badge sessions résumé */}
           {isStaff && resume && (
@@ -67,7 +67,7 @@ export default function ExamCard({ examen, onError }) {
               onClick={() => resume.tous_termines && setShowModal(true)}
               title={resume.tous_termines ? 'Tous les étudiants ont terminé — cliquez pour vérifier' : `${resume.terminees}/${resume.total} ont terminé`}
             >
-              {resume.tous_termines ? '✅ Tous terminés' : `${resume.terminees}/${resume.total}`}
+              {resume.tous_termines ? <><i className="bi bi-check-circle-fill" /> Tous terminés</> : `${resume.terminees}/${resume.total}`}
             </button>
           )}
         </div>
@@ -82,17 +82,17 @@ export default function ExamCard({ examen, onError }) {
         {/* Fenêtre de disponibilité */}
         {(examen.disponible_de || examen.disponible_jusqu_a) && (
           <div className="exam-dispo">
-            {examen.disponible_de && <span>📅 Dès le {fmtDateTime(examen.disponible_de)}</span>}
-            {examen.disponible_jusqu_a && <span>🔒 Jusqu&apos;au {fmtDateTime(examen.disponible_jusqu_a)}</span>}
+            {examen.disponible_de && <span><i className="bi bi-calendar-event" /> Dès le {fmtDateTime(examen.disponible_de)}</span>}
+            {examen.disponible_jusqu_a && <span><i className="bi bi-lock" /> Jusqu&apos;au {fmtDateTime(examen.disponible_jusqu_a)}</span>}
           </div>
         )}
 
         <div className="exam-card-footer">
           {/* Créateur — visible par les étudiants */}
           {isEtudiant && examen.createur_nom && (
-            <span className="exam-creator">👨‍🏫 {examen.createur_nom}</span>
+            <span className="exam-creator"><i className="bi bi-person-workspace" /> {examen.createur_nom}</span>
           )}
-          <span className="muted">⏱ {examen.duree_min} min</span>
+          <span className="muted"><i className="bi bi-clock" /> {examen.duree_min} min</span>
           {isEtudiant ? (
             <button className="btn btn-primary" onClick={demarrer}>
               {examen.modalite === 'oral' ? 'Passer l\'oral' : 'Démarrer'}
@@ -130,13 +130,13 @@ function buildTooltipNode(a) {
     <>
       {a.classes?.length > 0 && (
         <div className="tooltip-section">
-          <strong>🏫 Classes</strong>
+          <strong><i className="bi bi-building" /> Classes</strong>
           <ul>{a.classes.map((c) => <li key={c.id}>{c.nom}</li>)}</ul>
         </div>
       )}
       {a.etudiants?.length > 0 && (
         <div className="tooltip-section">
-          <strong>👤 Étudiants</strong>
+          <strong><i className="bi bi-person" /> Étudiants</strong>
           <ul>{a.etudiants.map((e) => <li key={e.id}>{e.nom}</li>)}</ul>
         </div>
       )}

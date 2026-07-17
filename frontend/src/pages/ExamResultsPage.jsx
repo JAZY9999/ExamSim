@@ -84,7 +84,7 @@ export default function ExamResultsPage() {
     <div className="exam-results-page">
       <div className="results-header-container">
         <button className="btn btn-ghost" onClick={() => navigate('/mes-sujets')}>
-          ← Retour aux sujets
+          <i className="bi bi-chevron-left" /> Retour aux sujets
         </button>
         <div className="results-title-section">
           <h1>{examen.titre}</h1>

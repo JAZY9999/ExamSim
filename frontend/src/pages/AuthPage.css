@@ -7,7 +7,7 @@
 
 /* --- Colonne gauche : illustration --- */
 .auth-hero {
-  background: linear-gradient(160deg, var(--primary) 0%, var(--primary-600) 100%);
+  background: var(--primary);
   color: #fff;
   padding: 48px 56px;
   display: flex;
@@ -21,21 +21,16 @@
 .auth-hero p { font-size: 17px; opacity: .9; max-width: 420px; }
 
 .auth-illus {
-  position: relative;
   margin-top: 48px;
   height: 220px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
 }
-.illus-emoji {
-  position: relative;
-  z-index: 2;
-  font-size: 64px;
-  display: block;
-  filter: drop-shadow(0 8px 16px rgba(0,0,0,.25));
+.auth-illus i {
+  font-size: 56px;
+  color: rgba(255, 255, 255, 0.85);
 }
-.blob { position: absolute; border-radius: 50%; filter: blur(8px); opacity: .35; }
-.b1 { width: 160px; height: 160px; background: #60a5fa; top: 10px; left: 20px; }
-.b2 { width: 120px; height: 120px; background: #a78bfa; top: 60px; left: 180px; }
-.b3 { width: 100px; height: 100px; background: #34d399; top: 100px; left: 90px; }
 
 /* --- Colonne droite : formulaire --- */
 .auth-form-wrap {
@@ -51,7 +46,7 @@
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow);
   padding: 40px;
 }
 .auth-form h2 { font-size: 26px; font-weight: 700; }

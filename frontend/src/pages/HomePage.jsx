@@ -101,7 +101,7 @@ export default function HomePage() {
     <div>
       <div className="page-hero" style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
         <div>
-          <h1>Bonjour {user?.prenom} 👋</h1>
+          <h1>Bonjour {user?.prenom}</h1>
           <p className="muted">
             {isExaminateur
               ? 'Espace examinateur : rejoignez un oral en cours ou consultez les sujets.'
@@ -110,7 +110,7 @@ export default function HomePage() {
         </div>
         {isExaminateur && (
           <button className="btn btn-primary" onClick={() => navigate('/creer')}>
-            ➕ Créer un examen
+            <i className="bi bi-plus-lg" /> Créer un examen
           </button>
         )}
       </div>
@@ -120,13 +120,13 @@ export default function HomePage() {
       {/* --- Oraux en direct (examinateur) --- */}
       {isExaminateur && (
         <>
-          <h2 className="section-title">🔴 Oraux en cours</h2>
+          <h2 className="section-title">Oraux en cours</h2>
           {activeOrals.length > 0 ? (
             <div className="card-grid" style={{ marginBottom: 32 }}>
               {activeOrals.map((s) => (
                 <div key={s.id} className="card oral-live-card">
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span className="tag tag-danger">● En direct</span>
+                    <span className="tag tag-danger"><i className="bi bi-record-circle-fill" /> En direct</span>
                     <span className="muted" style={{ fontSize: 13 }}>depuis {fmtHeure(s.debut_at)}</span>
                   </div>
                   <h3 style={{ margin: '10px 0 4px' }}>{s.examen_titre}</h3>
@@ -164,7 +164,7 @@ export default function HomePage() {
           <div className="filters-bar">
             {/* Recherche */}
             <div className="filter-search">
-              <span className="filter-search-icon">🔍</span>
+              <i className="filter-search-icon bi bi-search" />
               <input
                 className="input filter-input"
                 placeholder="Rechercher un sujet..."
@@ -194,8 +194,8 @@ export default function HomePage() {
             <select className="select filter-select" value={filterCiblage}
               onChange={(e) => { setFilterCiblage(e.target.value); if (e.target.value !== 'cible') setFilterClasse('toutes') }}>
               <option value="tous">Tout ciblage</option>
-              <option value="public">🌐 Public</option>
-              <option value="cible">🎯 Ciblé</option>
+              <option value="public">Public</option>
+              <option value="cible">Ciblé</option>
             </select>
 
             {/* Classe (visible seulement si filtre ciblage = ciblé) */}
@@ -212,7 +212,7 @@ export default function HomePage() {
             {/* Reset */}
             {nbFiltresActifs > 0 && (
               <button className="btn btn-ghost btn-small" onClick={resetFiltres}>
-                ✕ Réinitialiser ({nbFiltresActifs})
+                <i className="bi bi-x-lg" /> Réinitialiser ({nbFiltresActifs})
               </button>
             )}
           </div>
@@ -227,7 +227,8 @@ export default function HomePage() {
           {examensFiltres.map((e) => <ExamCard key={e.id} examen={e} onError={setError} />)}
           {examensFiltres.length === 0 && (
             <div className="empty-state">
-              <p>😶 Aucun examen ne correspond aux filtres.</p>
+              <i className="bi bi-inboxes empty-state-icon" />
+              <p>Aucun examen ne correspond aux filtres.</p>
               {nbFiltresActifs > 0 && (
                 <button className="btn btn-ghost btn-small" onClick={resetFiltres}>
                   Voir tous les sujets

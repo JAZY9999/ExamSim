@@ -8,7 +8,7 @@ import './PageCommon.css'
 import './MyExamsPage.css'
 
 const MODALITE = { qcm: 'QCM', cas_pratique: 'Cas pratique', oral: 'Oral' }
-const TYPE = { officiel: '🎯 Officiel', entrainement: '📝 Entraînement' }
+const TYPE = { officiel: 'Officiel', entrainement: 'Entraînement' }
 
 function fmtDate(iso) {
   if (!iso) return '—'
@@ -52,10 +52,10 @@ export default function MyExamsPage() {
     <div>
       <div className="page-hero" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16, flexWrap: 'wrap' }}>
         <div>
-          <h1>📋 Mes sujets</h1>
+          <h1>Mes sujets</h1>
           <p className="muted">Retrouvez tous vos examens et entraînements créés — modifiez ou supprimez-les ici.</p>
         </div>
-        <button className="btn btn-primary" onClick={() => navigate('/creer')}>➕ Nouveau sujet</button>
+        <button className="btn btn-primary" onClick={() => navigate('/creer')}><i className="bi bi-plus-lg" /> Nouveau sujet</button>
       </div>
 
       {error && <div className="alert alert-error">{error}</div>}
@@ -65,7 +65,7 @@ export default function MyExamsPage() {
       ) : examens.length === 0 ? (
         <div className="my-exams-empty">
           <p>Vous n&apos;avez encore créé aucun sujet.</p>
-          <button className="btn btn-primary" onClick={() => navigate('/creer')}>➕ Créer mon premier sujet</button>
+          <button className="btn btn-primary" onClick={() => navigate('/creer')}><i className="bi bi-plus-lg" /> Créer mon premier sujet</button>
         </div>
       ) : (
         <div className="my-exams-list">
@@ -80,7 +80,7 @@ export default function MyExamsPage() {
                     <span className="muted" style={{ fontSize: 13 }}>{TYPE[e.type]}</span>
                     {e.assignations && (
                       <span className="tag" style={{ fontSize: 12 }}>
-                        🎯 {(e.assignations.classes?.length || 0) + (e.assignations.etudiants?.length || 0)} destinataire(s)
+                        {(e.assignations.classes?.length || 0) + (e.assignations.etudiants?.length || 0)} destinataire(s)
                       </span>
                     )}
                   </div>
@@ -90,14 +90,14 @@ export default function MyExamsPage() {
                   {/* Fenêtre de disponibilité */}
                   {(e.disponible_de || e.disponible_jusqu_a) && (
                     <div className="my-exam-dispo">
-                      {e.disponible_de && <span>📅 Dès le {fmtDateTime(e.disponible_de)}</span>}
-                      {e.disponible_jusqu_a && <span>🔒 Jusqu&apos;au {fmtDateTime(e.disponible_jusqu_a)}</span>}
+                      {e.disponible_de && <span><i className="bi bi-calendar-event" /> Dès le {fmtDateTime(e.disponible_de)}</span>}
+                      {e.disponible_jusqu_a && <span><i className="bi bi-lock" /> Jusqu&apos;au {fmtDateTime(e.disponible_jusqu_a)}</span>}
                     </div>
                   )}
 
                   <div className="my-exam-meta">
-                    <span className="muted">⏱ {e.duree_min} min</span>
-                    <span className="muted">📅 Créé le {fmtDate(e.created_at)}</span>
+                    <span className="muted"><i className="bi bi-clock" /> {e.duree_min} min</span>
+                    <span className="muted"><i className="bi bi-calendar-event" /> Créé le {fmtDate(e.created_at)}</span>
                     {(e.tags || []).map((t) => <span key={t} className="tag">{t}</span>)}
                   </div>
                 </div>
@@ -108,7 +108,7 @@ export default function MyExamsPage() {
                     <div className={`sessions-progress${resume.tous_termines ? ' done' : ''}`}>
                       <span className="sessions-count">{resume.terminees}/{resume.total}</span>
                       <span className="sessions-label">
-                        {resume.tous_termines ? '✅ Tous ont terminé' : 'ont terminé'}
+                        {resume.tous_termines ? <><i className="bi bi-check-circle-fill" /> Tous ont terminé</> : 'ont terminé'}
                       </span>
                       {resume.tous_termines && (
                         <p className="muted" style={{ fontSize: 12, marginTop: 4 }}>
@@ -119,14 +119,14 @@ export default function MyExamsPage() {
                   )}
                   <div className="my-exam-actions">
                     <button className="btn btn-primary btn-small" onClick={() => navigate(`/examens/${e.id}/resultats`)}>
-                      📊 Résultats
+                      <i className="bi bi-bar-chart" /> Résultats
                     </button>
                     <button className="btn btn-ghost" onClick={() => navigate(`/examens/${e.id}/modifier`)}>
-                      ✏️ Modifier
+                      <i className="bi bi-pencil-square" /> Modifier
                     </button>
                     <button className="btn btn-ghost btn-danger-ghost"
                       disabled={deleting === e.id} onClick={() => supprimer(e)}>
-                      {deleting === e.id ? '...' : '🗑 Supprimer'}
+                      {deleting === e.id ? '...' : <><i className="bi bi-trash" /> Supprimer</>}
                     </button>
                   </div>
                 </div>

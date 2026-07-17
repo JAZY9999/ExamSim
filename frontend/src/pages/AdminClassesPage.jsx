@@ -112,7 +112,7 @@ export default function AdminClassesPage() {
             onChange={(e) => setNomClasse(e.target.value)}
           />
           <button className="btn btn-primary" disabled={busy || !nomClasse.trim()}>
-            {busy ? '...' : '+ Créer la classe'}
+            {busy ? '...' : <><i className="bi bi-plus-lg" /> Créer la classe</>}
           </button>
         </form>
       </div>
@@ -142,7 +142,7 @@ export default function AdminClassesPage() {
                 {/* En-tête de la classe */}
                 <div className="classe-header" onClick={() => setExpanded(isOpen ? null : c.id)}>
                   <div className="classe-info">
-                    <span className="classe-icon">🏫</span>
+                    <i className="classe-icon bi bi-building" />
                     <div>
                       <strong className="classe-nom">{c.nom}</strong>
                       <span className="muted classe-count">
@@ -157,9 +157,9 @@ export default function AdminClassesPage() {
                       title="Supprimer la classe"
                       onClick={(e) => { e.stopPropagation(); supprimerClasse(c) }}
                     >
-                      🗑 Supprimer
+                      <i className="bi bi-trash" /> Supprimer
                     </button>
-                    <span className="chevron">{isOpen ? '▲' : '▼'}</span>
+                    <i className={`chevron bi ${isOpen ? 'bi-chevron-up' : 'bi-chevron-down'}`} />
                   </div>
                 </div>
 
@@ -187,7 +187,7 @@ export default function AdminClassesPage() {
                                   className="btn btn-ghost btn-small btn-delete"
                                   onClick={() => retirerMembre(c.id, m.id, `${m.prenom} ${m.nom}`)}
                                 >
-                                  ✕ Retirer
+                                  <i className="bi bi-x-lg" /> Retirer
                                 </button>
                               </td>
                             </tr>
@@ -207,7 +207,7 @@ export default function AdminClassesPage() {
                         className="btn btn-ghost"
                         onClick={() => { setAddingTo(c.id); setSearchEtudiant('') }}
                       >
-                        + Ajouter un étudiant
+                        <i className="bi bi-plus-lg" /> Ajouter un étudiant
                       </button>
                     ) : (
                       <div className="add-membre-panel">

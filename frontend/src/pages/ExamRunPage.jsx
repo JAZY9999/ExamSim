@@ -81,7 +81,7 @@ export default function ExamRunPage() {
     return (
       <div className="run-result">
         <div className="card result-card">
-          <div className="result-check">✅</div>
+          <div className="result-check"><i className="bi bi-check-circle-fill" /></div>
           <h1>Examen soumis !</h1>
           {result.score_auto != null ? (
             <p className="result-score">
@@ -108,7 +108,7 @@ export default function ExamRunPage() {
           <div className="progress-bar"><div className="progress-fill" style={{ width: `${progress}%` }} /></div>
         </div>
         <div className={`run-timer ${critical ? 'critical' : ''}`}>
-          ⏱ {fmt(seconds)}
+          <i className="bi bi-clock" /> {fmt(seconds)}
         </div>
       </header>
 
@@ -143,11 +143,11 @@ export default function ExamRunPage() {
       {/* Navigation bas de page */}
       <footer className="run-footer">
         <button className="btn btn-ghost" disabled={current === 0}
-          onClick={() => setCurrent((c) => c - 1)}>← Précédente</button>
+          onClick={() => setCurrent((c) => c - 1)}><i className="bi bi-chevron-left" /> Précédente</button>
 
         {current < total - 1 ? (
           <button className="btn btn-ghost" onClick={() => setCurrent((c) => c + 1)}>
-            Suivante →
+            Suivante <i className="bi bi-chevron-right" />
           </button>
         ) : <span />}
 

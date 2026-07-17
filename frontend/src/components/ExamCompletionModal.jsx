@@ -40,8 +40,8 @@ export default function ExamCompletionModal({ examen, onClose }) {
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-container" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
-          <h2>🎯 Destinataires de : {examen.titre}</h2>
-          <button className="btn-close" onClick={onClose}>✕</button>
+          <h2><i className="bi bi-bullseye" /> Destinataires de : {examen.titre}</h2>
+          <button className="btn-close" onClick={onClose}><i className="bi bi-x-lg" /></button>
         </div>
 
         <div className="modal-body">

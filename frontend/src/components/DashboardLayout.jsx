@@ -5,13 +5,13 @@ import { useAuth } from '../context/AuthContext'
 import './DashboardLayout.css'
 
 const NAV = [
-  { to: '/', label: 'Accueil', icon: '🏠', end: true },
-  { to: '/entrainements', label: 'Mes entraînements', icon: '📝' },
-  { to: '/examens', label: 'Examens officiels', icon: '🎯' },
+  { to: '/', label: 'Accueil', icon: 'bi-house-door', end: true },
+  { to: '/entrainements', label: 'Mes entraînements', icon: 'bi-journal-text' },
+  { to: '/examens', label: 'Examens officiels', icon: 'bi-bullseye' },
   // La création et la gestion de sujets sont réservées au personnel.
-  { to: '/creer', label: 'Créer un sujet', icon: '➕', roles: ['examinateur', 'admin'] },
-  { to: '/mes-sujets', label: 'Mes sujets', icon: '📋', roles: ['examinateur', 'admin'] },
-  { to: '/statistiques', label: 'Statistiques', icon: '📊' },
+  { to: '/creer', label: 'Créer un sujet', icon: 'bi-plus-circle', roles: ['examinateur', 'admin'] },
+  { to: '/mes-sujets', label: 'Mes sujets', icon: 'bi-list-check', roles: ['examinateur', 'admin'] },
+  { to: '/statistiques', label: 'Statistiques', icon: 'bi-bar-chart' },
 ]
 
 export default function DashboardLayout() {
@@ -29,27 +29,27 @@ export default function DashboardLayout() {
     <div className="layout">
       {/* Sidebar */}
       <aside className="sidebar">
-        <div className="sidebar-logo">🎓 <span>ExamSim</span></div>
+        <div className="sidebar-logo"><i className="bi bi-mortarboard-fill" /> <span>ExamSim</span></div>
         <nav className="sidebar-nav">
           {NAV.filter((item) => !item.roles || item.roles.includes(user?.role)).map((item) => (
             <NavLink key={item.to} to={item.to} end={item.end}
               className={({ isActive }) => 'nav-item' + (isActive ? ' active' : '')}>
-              <span className="nav-icon">{item.icon}</span>{item.label}
+              <i className={`nav-icon bi ${item.icon}`} />{item.label}
             </NavLink>
           ))}
           {user?.role === 'admin' && (
             <>
               <NavLink to="/admin" end
                 className={({ isActive }) => 'nav-item' + (isActive ? ' active' : '')}>
-                <span className="nav-icon">⚙️</span>Administration
+                <i className="nav-icon bi bi-gear" />Administration
               </NavLink>
               <NavLink to="/admin/classes"
                 className={({ isActive }) => 'nav-item' + (isActive ? ' active' : '')}>
-                <span className="nav-icon">🏫</span>Classes
+                <i className="nav-icon bi bi-building" />Classes
               </NavLink>
               <NavLink to="/admin/journal"
                 className={({ isActive }) => 'nav-item' + (isActive ? ' active' : '')}>
-                <span className="nav-icon">📜</span>Journal d'activité
+                <i className="nav-icon bi bi-journal-text" />Journal d'activité
               </NavLink>
             </>
           )}
@@ -64,11 +64,11 @@ export default function DashboardLayout() {
         {/* Header */}
         <header className="header">
           <div className="search">
-            <span className="search-icon">🔍</span>
+            <i className="search-icon bi bi-search" />
             <input className="search-input" placeholder="Rechercher un sujet, un examen..." />
           </div>
           <div className="header-right">
-            <button className="icon-btn" title="Notifications">🔔</button>
+            <button className="icon-btn" title="Notifications"><i className="bi bi-bell" /></button>
             <div className="avatar" title={`${user?.prenom} ${user?.nom}`}>{initials}</div>
             <button className="btn btn-ghost" onClick={handleLogout}>Déconnexion</button>
           </div>

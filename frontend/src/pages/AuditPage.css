@@ -1,8 +1,14 @@
 .audit-filters {
   display: flex; gap: 12px; margin-bottom: 18px; flex-wrap: wrap;
 }
-.audit-filters .input { flex: 1; min-width: 240px; }
 .audit-filters .select { width: auto; }
+
+.audit-search { position: relative; flex: 1; min-width: 240px; }
+.audit-search i {
+  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+  opacity: .5; pointer-events: none;
+}
+.audit-search .input { width: 100%; padding-left: 38px; }
 
 .audit-date { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .audit-email { font-size: 12px; }
